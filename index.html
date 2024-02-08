@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    *{margin: 0;
+    padding: 0;}
+   
+body {font-family: Arial, sans-serif;
+    background-color: wheat;}
+
+ .calculator{border: 3px solid black;
+    background-color: #212020;
+    display: flex;
+    color: wheat;
+/* margin-left: 33%;
+margin-top: 10%; */
+
+    width: 300px;
+    font-size: 40px;
+
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: space-around;}
+
+    input{
+        background-color: wheat;
+        font-weight: 700;
+    }
+
+    .keypad{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    text-align: center;
+            }
+
+button{
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    background-color: wheat;
+    border-radius: 7px ;
+    border: 2px solid white;
+}
+.output{
+    height: 70px;
+    font-size: 40px;
+    text-align: right;
+    border: 2px solid white;
+    border-radius: 7px;
+
+}
+   
+</style>
+<body>
+    <div class="calculator">
+<input class="output" value="0">
+<div class="keypad">
+<button class="buttons seven">7</button>
+<button class="buttons eight">8</button>
+<button class="buttons nine">9</button>
+<button class="buttons multiply">*</button>
+<button class="buttons four">4</button>
+<button class="buttons five">5</button>
+<button class="buttons six">6</button>
+<button class="buttons minus">-</button>
+<button class="buttons one">1</button>
+<button class="buttons two">2</button>
+<button class="buttons three">3</button>
+<button class="buttons plus">+</button>
+<button class="buttons zero">0</button>
+<button class="buttons divide">/</button>
+<button class="buttons equal">=</button>
+<button class="buttons clear">C</button>
+</div>
+
+
+    
+
+</body>
+
+<script>
+let string=""
+let buttons=document.querySelectorAll('.buttons')
+Array.from(buttons).forEach((button)=>{
+    button.addEventListener('click',function(e){
+        
+        if(e.target.innerHTML=="="){
+            string=eval(string)
+            document.querySelector('.output').value=string
+        }
+        else if(e.target.innerHTML=='C'){
+            string="";
+            document.querySelector('.output').value=string
+        }
+        else{
+            string=string+ e.target.innerHTML
+            document.querySelector('input').value=string;
+        }
+    })
+})
+
+
+</script>
+</html>
